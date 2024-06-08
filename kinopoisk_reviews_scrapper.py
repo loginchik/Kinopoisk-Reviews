@@ -61,9 +61,8 @@ class KinopoiskReviewsScrapper:
                     self.loading_pause()
 
                     if 'captcha' in self.driver.current_url:
-                        wrong_urls += urls[url_i:]
-                        print('Captcha fail')
-                        return wrong_urls
+                        input('Press return when captcha ends')
+                        time.sleep(uniform(5, 10))
 
                     # Save movie heading to add to final data
                     movie_heading = self.driver.find_element(by=By.TAG_NAME, value='h1')
