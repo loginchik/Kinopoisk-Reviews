@@ -221,8 +221,9 @@ class KinopoiskReviewsScrapper:
         :return: URL to reviews start page.
         """
 
-        expected_link_pattern = r'https://www.kinopoisk.ru/film/\d+/?'
+        expected_link_pattern = r'https://www.kinopoisk.ru/(film|series)/\d+/?'
         if re.fullmatch(expected_link_pattern, movie_url):
+            movie_url = movie_url.replace('series', 'film')
             return movie_url.strip('/') + '/reviews/ord/date/status/all/perpage/200/'
         else:
             raise ValueError('Invalid link to movie provided, please, check it')
